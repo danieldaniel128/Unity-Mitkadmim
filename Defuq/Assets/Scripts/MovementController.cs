@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    [SerializeField]
-    float _speed = 5f;
+    [SerializeField] float _speed;
 
     private void Update()
     {
