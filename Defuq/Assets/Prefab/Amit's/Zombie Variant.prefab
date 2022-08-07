@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5fea83a0794350046a3c28a83a89f153, type: 3}
       propertyPath: m_Name
-      value: Zombie
+      value: Zombie Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fea83a0794350046a3c28a83a89f153, type: 3}
@@ -82,3 +82,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5219283026739902523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5969848165251153976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738bbca680bf58d4b874121792ec298b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyKilled:
+    m_PersistentCalls:
+      m_Calls: []
+  currentEnemy:
+    maxHealth: 0
+    attackDamage: 0
+    attackRange: 0
+    viosinRange: 0
+    visionAngle: 0
