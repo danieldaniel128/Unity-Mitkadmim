@@ -7,9 +7,17 @@ public class EnemyBehavior : MonoBehaviour
 {
     public UnityEvent enemyKilled;
 
+    [SerializeField] Animator animator;
+    [SerializeField] string KilledBoolExpersion;
     [SerializeField] EnemyStatsSO currentEnemy = new EnemyStatsSO();
 
+
     private int currentHealth;
+
+    public void AnimatorBoolToTrue()
+    {
+        animator.SetBool(KilledBoolExpersion, true);
+    }
 
     private void Start()
     {
@@ -17,7 +25,7 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     // Can be change if we decide the player manage all combat logic
-    void TakeDamage(int damageTaken)
+    private void TakeDamage(int damageTaken)
     {
         if (currentHealth > 0)
         {
@@ -25,13 +33,18 @@ public class EnemyBehavior : MonoBehaviour
             // Debug
             Debug.Log("Damage Taken");
         }
-        else if (currentHealth < 0)
+        else if (currentHealth <= 0)
         {
-            enemyKilled.Invoke();
             currentHealth = 0;
-            // Debug
+            enemyKilled.Invoke();
             Debug.Log("Enemy Killed");
         }
+    }
+
+    // Used to debug Enemy Hit And death Logic
+    private void OnMouseDown()
+    {
+        TakeDamage(25);
     }
 }
 
