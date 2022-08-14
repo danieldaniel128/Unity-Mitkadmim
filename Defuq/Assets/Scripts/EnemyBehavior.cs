@@ -6,22 +6,36 @@ using UnityEngine.Events;
 public class EnemyBehavior : MonoBehaviour
 {
     public UnityEvent enemyKilled;
+    public UnityEvent enemyAttack;
 
-    [SerializeField] Animator animator;
+    [SerializeField] Animator enemyAnimator;
     [SerializeField] string KilledBoolExpersion;
-    [SerializeField] EnemyStatsSO currentEnemy = new EnemyStatsSO();
+    [SerializeField] string AttackBoolExpersion;
+    [SerializeField] EnemyStatsSO currentEnemySO;
 
 
     private int currentHealth;
+    private int currentDamage;
 
-    public void AnimatorBoolToTrue()
+    public void AnimatorKilledTrue()
     {
-        animator.SetBool(KilledBoolExpersion, true);
+        enemyAnimator.SetBool(KilledBoolExpersion, true);
+    }
+
+    public void AnimatorAttackTrue()
+    {
+        enemyAnimator.SetBool(AttackBoolExpersion, true);
+    }
+
+    public void AnimatorAttackFalse()
+    {
+        enemyAnimator.SetBool(AttackBoolExpersion, false);
     }
 
     private void Start()
     {
-        currentHealth = currentEnemy.maxHealth;
+        currentHealth = currentEnemySO.maxHealth;
+        currentDamage = currentEnemySO.attackDamage;
     }
 
     // Can be change if we decide the player manage all combat logic
@@ -41,10 +55,12 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    // Used to debug Enemy Hit And death Logic
+
+    // Used to debug Animations, Attack will Initiate, and killed will initate evantualy
     private void OnMouseDown()
     {
         TakeDamage(25);
+        enemyAttack.Invoke();
     }
 }
 

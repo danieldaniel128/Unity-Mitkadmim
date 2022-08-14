@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class EnemyStatsSO
+
+[CreateAssetMenu(fileName = "Enemy",menuName = "Create New Enemy SO",order = 1)]
+public class EnemyStatsSO : ScriptableObject
 {
     public int maxHealth;
     public int attackDamage;
