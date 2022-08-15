@@ -19,3 +19,4 @@ MonoBehaviour:
   dashSpeed: 75
   dashCooldown: 3
   dashDuration: 0.075
+  resetVelocityAfterDash: 0

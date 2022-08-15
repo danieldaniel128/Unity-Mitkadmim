@@ -74,7 +74,7 @@ public class PlayerMovementControllerV2 : MonoBehaviour
         yield return new WaitForSeconds(data.dashDuration);
 
         //set player movement at max speed
-        rb.velocity = _moveInput * data.runMaxSpeed;
+        rb.velocity = data.resetVelocityAfterDash ? Vector3.zero : _moveInput * data.runMaxSpeed;
 
         //unlock player movement
         lockMovement = false;

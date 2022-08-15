@@ -215,7 +215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8881890470304338478, guid: fcc7e72ef9922724c9dbe91fe1141293, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8881890470304338478, guid: fcc7e72ef9922724c9dbe91fe1141293, type: 3}
       propertyPath: m_Controller
@@ -453,6 +453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1345430123}
   - component: {fileID: 1345430124}
+  - component: {fileID: 1345430125}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -490,6 +491,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: d360e1c971c435244acae7538c6a840c, type: 2}
   rb: {fileID: 503163152}
+--- !u!114 &1345430125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345430122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dcd42d4816433c4a95a7c40cd34aeca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
 --- !u!1 &1673421187
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Dash", menuName = "Dash")]
+[CreateAssetMenu(fileName = "New Movement", menuName = "Movement")]
 
 public class MovementData : ScriptableObject
 {
@@ -16,7 +16,7 @@ public class MovementData : ScriptableObject
     public float dashSpeed;
     public float dashCooldown;
     public float dashDuration;
-
+    public bool resetVelocityAfterDash;
     private void OnValidate()
     {
         runAcceleration = Mathf.Clamp(runAcceleration,1,runMaxSpeed);
