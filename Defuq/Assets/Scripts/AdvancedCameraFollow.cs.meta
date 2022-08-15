@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Defuq/Assets/Scripts/MovementData.cs.meta
+guid: bdae57661936148468a7033e6bb445ed
+========
+guid: 7c100c4567dae2b42a8e18fe541f7e73
+>>>>>>>> origin/CameraFollow:Defuq/Assets/Scripts/AdvancedCameraFollow.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
