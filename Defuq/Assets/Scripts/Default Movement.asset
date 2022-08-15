@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdae57661936148468a7033e6bb445ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 39bf8383f9d42d14996c4f0c295d6345, type: 3}
   m_Name: Default Movement
   m_EditorClassIdentifier: 
   runMaxSpeed: 10
@@ -18,5 +18,5 @@ MonoBehaviour:
   dashKey: 304
   dashSpeed: 75
   dashCooldown: 3
-  dashDuration: 0.075
+  dashDuration: 0.1
   resetVelocityAfterDash: 0

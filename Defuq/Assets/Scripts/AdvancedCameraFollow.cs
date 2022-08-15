@@ -8,6 +8,7 @@ public class AdvancedCameraFollow : MonoBehaviour
     [SerializeField] float zfollowSpeed;
     [SerializeField] float xfollowSpeed;
     [SerializeField] float zOffset;
+    [SerializeField] float xOffset;
     Vector3 cameraPosition;
     float x;
     float z;
@@ -21,7 +22,7 @@ public class AdvancedCameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        x += (target.transform.position.x - x) * 0.01f* xfollowSpeed;//moves 1%*followSpeed closer towards our target(player) x axis
+        x += (target.transform.position.x - x + xOffset) * 0.01f* xfollowSpeed;//moves 1%*followSpeed closer towards our target(player) x axis
         z += (target.transform.position.z - z- zOffset) * 0.01f* zfollowSpeed;//moves 1%*followSpeed closer towards our target(player) z axis
         cameraPosition = new Vector3(x, cameraPosition.y, z);
         Camera.main.transform.position = cameraPosition*Time.timeScale;//incase we want to pause the game(default equals 1)
