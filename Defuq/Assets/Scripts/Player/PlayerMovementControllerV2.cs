@@ -11,10 +11,22 @@ public class PlayerMovementControllerV2 : MonoBehaviour
     
     [SerializeField] Rigidbody rb;
     Vector3 _moveInput;
+    Vector3 _camForward;
+    Vector3 _camOffset;
+    Vector3 _moveW_Offset;
     bool dashAvailable = true;
     bool lockMovement = false;
 
-    
+    //Vector3 targetDir = target.position - transform.position;
+    //angleBetween = Vector3.Angle(transform.forward, targetDir);
+
+    private void Start()
+    {
+        Camera mainCamera = Camera.main;
+        _camForward = mainCamera.transform.forward;
+        Debug.Log(_camForward);
+        Debug.Log(_camForward.normalized);
+    }
 
     private void Update()
     {
@@ -22,31 +34,34 @@ public class PlayerMovementControllerV2 : MonoBehaviour
         float verticalInput = Input.GetAxisRaw(VERTICAL_AXIS);
 
         _moveInput = new Vector3(horizontalInput, 0f, verticalInput).normalized; //recieve input from player
+        _camOffset = new Vector3(_moveInput.x - _camForward.x, _moveInput.y,_moveInput.z-_camForward.z);
+        Vector3 fuckoff = new Vector3(horizontalInput, 0f, verticalInput) - _camForward;
+        Debug.Log("input not norm - cam: " + fuckoff);
+        Debug.Log("normalized: " + fuckoff.normalized);
 
-        if(Input.GetKeyDown(data.dashKey) && dashAvailable)
+        if (Input.GetKeyDown(data.dashKey) && dashAvailable)
         {
             Dash();
         }
 
     }
 
+
+    private void FixedUpdate()
+    {
+        if (!lockMovement)
+        {
+            Move();
+        }
+    }
     private void Dash()
     {
         StartCoroutine(DashCooldown());
         StartCoroutine(DashMovement());
     }
 
-    private void FixedUpdate()
+    private void Move()
     {
-        if (!lockMovement)
-        {
-            Run();
-        }
-    }
-
-    private void Run()
-    {
-
         Vector3 targetSpeed = _moveInput * data.runMaxSpeed;
         Vector3 speedDif = targetSpeed - rb.velocity;
         Vector3 movement = speedDif * (targetSpeed == Vector3.zero ? data.runDeceleration : data.runAcceleration);
@@ -56,6 +71,8 @@ public class PlayerMovementControllerV2 : MonoBehaviour
         }
         else
         {
+            Debug.Log("Movement: " + movement);
+            //_moveW_Offset = new Vector3(movement.x - _camOffset.x, movement.y, movement.z - _camOffset.y);
             rb.AddForce(movement, ForceMode.Acceleration);
         }
     }
