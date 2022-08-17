@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdae57661936148468a7033e6bb445ed, type: 3}
   m_Name: Default Movement
   m_EditorClassIdentifier: 
-  runMaxSpeed: 10
+  runMaxSpeed: 11
   runAcceleration: 8
-  runDeceleration: 10
+  runDeceleration: 11
   dashKey: 304
   dashSpeed: 75
   dashCooldown: 3
