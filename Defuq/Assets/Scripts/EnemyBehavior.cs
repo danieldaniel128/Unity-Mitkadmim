@@ -32,7 +32,7 @@ public class EnemyBehavior : MonoBehaviour
         enemyAnimator.SetBool(AttackBoolExpersion, false);
     }
 
-    private void Start()
+    private void Awake()
     {
         currentHealth = currentEnemySO.maxHealth;
         currentDamage = currentEnemySO.attackDamage;
