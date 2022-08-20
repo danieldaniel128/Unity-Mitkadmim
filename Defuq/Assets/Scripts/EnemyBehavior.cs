@@ -8,29 +8,12 @@ public class EnemyBehavior : MonoBehaviour
     public UnityEvent enemyKilled;
     public UnityEvent enemyAttack;
 
-    [SerializeField] Animator enemyAnimator;
-    [SerializeField] string KilledBoolExpersion;
-    [SerializeField] string AttackBoolExpersion;
     [SerializeField] EnemyStatsSO currentEnemySO;
-
 
     private int currentHealth;
     private int currentDamage;
 
-    public void AnimatorKilledTrue()
-    {
-        enemyAnimator.SetBool(KilledBoolExpersion, true);
-    }
 
-    public void AnimatorAttackTrue()
-    {
-        enemyAnimator.SetBool(AttackBoolExpersion, true);
-    }
-
-    public void AnimatorAttackFalse()
-    {
-        enemyAnimator.SetBool(AttackBoolExpersion, false);
-    }
 
     private void Awake()
     {
@@ -53,14 +36,6 @@ public class EnemyBehavior : MonoBehaviour
             enemyKilled.Invoke();
             Debug.Log("Enemy Killed");
         }
-    }
-
-
-    // Used to debug Animations, Attack will Initiate, and killed will initate evantualy
-    private void OnMouseDown()
-    {
-        TakeDamage(25);
-        enemyAttack.Invoke();
     }
 }
 

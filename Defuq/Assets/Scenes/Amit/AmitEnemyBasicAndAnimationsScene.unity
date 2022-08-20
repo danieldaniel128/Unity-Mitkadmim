@@ -308,6 +308,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1558490661425998937, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
+      propertyPath: enemyAnimator
+      value: 
+      objectReference: {fileID: 1673525846}
+    - target: {fileID: 1558490661425998937, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
+      propertyPath: AttackBoolExpersion
+      value: IsAttacking
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558490661425998937, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
+      propertyPath: KilledBoolExpersion
+      value: IsKilled
+      objectReference: {fileID: 0}
     - target: {fileID: 5219283026739902523, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
       propertyPath: animator
       value: 
@@ -363,7 +375,7 @@ PrefabInstance:
     - target: {fileID: 5219283026739902523, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
       propertyPath: enemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1673525845}
+      objectReference: {fileID: 1673525850}
     - target: {fileID: 5219283026739902523, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
       propertyPath: enemyAttack.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -371,7 +383,7 @@ PrefabInstance:
     - target: {fileID: 5219283026739902523, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
       propertyPath: enemyKilled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1673525845}
+      objectReference: {fileID: 1673525850}
     - target: {fileID: 5219283026739902523, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
       propertyPath: enemyKilled.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -402,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5219283026739902523, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
       propertyPath: enemyAttack.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyBehavior, Assembly-CSharp
+      value: AnimationSwitch, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5219283026739902523, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
       propertyPath: enemyAttack.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -410,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5219283026739902523, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
       propertyPath: enemyKilled.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyBehavior, Assembly-CSharp
+      value: AnimationSwitch, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5219283026739902523, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
       propertyPath: enemyKilled.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -483,17 +495,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5969848165251153976, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
   m_PrefabInstance: {fileID: 1279814124}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1673525845 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5219283026739902523, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
-  m_PrefabInstance: {fileID: 1279814124}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673525844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738bbca680bf58d4b874121792ec298b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1673525846 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 675356554, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
@@ -513,3 +514,14 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -497688465526345628, guid: 5fea83a0794350046a3c28a83a89f153, type: 3}
+--- !u!114 &1673525850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1558490661425998937, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
+  m_PrefabInstance: {fileID: 1279814124}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673525844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6f6acb3af7bd546ba7c32c9a6d8bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

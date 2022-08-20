@@ -97,9 +97,22 @@ MonoBehaviour:
   enemyKilled:
     m_PersistentCalls:
       m_Calls: []
-  currentEnemy:
-    maxHealth: 0
-    attackDamage: 0
-    attackRange: 0
-    viosinRange: 0
-    visionAngle: 0
+  enemyAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  currentEnemySO: {fileID: 0}
+--- !u!114 &1558490661425998937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5969848165251153976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6f6acb3af7bd546ba7c32c9a6d8bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAnimator: {fileID: 0}
+  KilledBoolExpersion: 
+  AttackBoolExpersion: 
