@@ -9,7 +9,7 @@ public class EnemyStatsSO : ScriptableObject
 {
     public int maxHealth;
     public int attackDamage;
-    public int attackRange;
+    public float attackRange;
     public float visionRange;
     // ? not sure about the role but ok
     [Range(0,360)]

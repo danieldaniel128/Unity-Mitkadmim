@@ -9,16 +9,18 @@ public class EnemyBehavior : MonoBehaviour
     public UnityEvent enemyAttack;
 
     public List<Transform> targetsAquired = new List<Transform>();
+    public List<Transform> targetInAttRange = new List<Transform>();
 
     [SerializeField] EnemyStatsSO currentEnemySO;
-    [SerializeField] Rigidbody currentRigid;
-    [SerializeField] LayerMask targerMask;
+
+    [SerializeField] LayerMask targetMask;
     [SerializeField] LayerMask ObstacleMask;
 
     private int currentHealth;
     private int currentDamage;
     public float currentRadius;
     public float currentViewAngle;
+    public float currentAttackRange;
 
     IEnumerator findTargetsWithDelay(float delay)
     {
@@ -26,13 +28,14 @@ public class EnemyBehavior : MonoBehaviour
         {
             yield return new WaitForSeconds(delay);
             FindVisableTargets();
+            TargetsInAttackRange();
         }
     }
 
     void FindVisableTargets()
     {
         targetsAquired.Clear();
-        Collider[] targetInRadius = Physics.OverlapSphere(transform.position, currentRadius, targerMask);
+        Collider[] targetInRadius = Physics.OverlapSphere(transform.position, currentRadius, targetMask);
 
         for (int i = 0; i < targetInRadius.Length; i++)
         {
@@ -46,6 +49,24 @@ public class EnemyBehavior : MonoBehaviour
                 {
                     targetsAquired.Add(target);
                 }
+            }
+        }
+    }
+
+    void TargetsInAttackRange()
+    {
+        targetInAttRange.Clear();
+        Collider[] targetsInRange = Physics.OverlapSphere(transform.position, currentAttackRange, targetMask);
+
+        for (int i = 0; i < targetsInRange.Length; i++)
+        {
+            Transform target = targetsInRange[i].transform;
+            Vector3 dirToTarget = (target.position - transform.position).normalized;
+            float dstToTarget = Vector3.Distance(transform.position, target.position);
+
+            if (!Physics.Raycast (transform.position,dirToTarget,dstToTarget, ObstacleMask))
+            {
+                targetInAttRange.Add(target);
             }
         }
     }
@@ -65,6 +86,7 @@ public class EnemyBehavior : MonoBehaviour
         currentDamage = currentEnemySO.attackDamage;
         currentRadius = currentEnemySO.visionRange;
         currentViewAngle = currentEnemySO.visionAngle;
+        currentAttackRange = currentEnemySO.attackRange;
     }
 
     private void Start()
