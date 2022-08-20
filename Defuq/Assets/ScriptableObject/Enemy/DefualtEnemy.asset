@@ -15,5 +15,5 @@ MonoBehaviour:
   maxHealth: 20
   attackDamage: 9
   attackRange: 20
-  viosinRange: 80
+  visionRange: 0
   visionAngle: 120

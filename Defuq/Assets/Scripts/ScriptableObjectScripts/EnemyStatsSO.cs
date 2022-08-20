@@ -10,9 +10,10 @@ public class EnemyStatsSO : ScriptableObject
     public int maxHealth;
     public int attackDamage;
     public int attackRange;
-    public int viosinRange;
+    public float visionRange;
     // ? not sure about the role but ok
-    public int visionAngle;
+    [Range(0,360)]
+    public float visionAngle;
 
 }
 // script Created by Amit 

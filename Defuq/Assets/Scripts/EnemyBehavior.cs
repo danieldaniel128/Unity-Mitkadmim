@@ -8,17 +8,68 @@ public class EnemyBehavior : MonoBehaviour
     public UnityEvent enemyKilled;
     public UnityEvent enemyAttack;
 
+    public List<Transform> targetsAquired = new List<Transform>();
+
     [SerializeField] EnemyStatsSO currentEnemySO;
+    [SerializeField] Rigidbody currentRigid;
+    [SerializeField] LayerMask targerMask;
+    [SerializeField] LayerMask ObstacleMask;
 
     private int currentHealth;
     private int currentDamage;
+    public float currentRadius;
+    public float currentViewAngle;
 
+    IEnumerator findTargetsWithDelay(float delay)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(delay);
+            FindVisableTargets();
+        }
+    }
 
+    void FindVisableTargets()
+    {
+        targetsAquired.Clear();
+        Collider[] targetInRadius = Physics.OverlapSphere(transform.position, currentRadius, targerMask);
+
+        for (int i = 0; i < targetInRadius.Length; i++)
+        {
+            Transform target = targetInRadius[i].transform;
+            Vector3 dirToTarger = (target.position - transform.position).normalized;
+            if(Vector3.Angle(transform.forward, dirToTarger) < currentViewAngle / 2)
+            {
+                float dstToTarget = Vector3.Distance(transform.position, target.position);
+                
+                if (!Physics.Raycast(transform.position, dirToTarger, dstToTarget, ObstacleMask))
+                {
+                    targetsAquired.Add(target);
+                }
+            }
+        }
+    }
+
+    public Vector3 DirectionFromAngle(float viewAngle,bool angleIsGlobal)
+    {
+        if (!angleIsGlobal)
+        {
+            viewAngle += transform.eulerAngles.y; 
+        }
+        return new Vector3(Mathf.Sin(viewAngle * Mathf.Deg2Rad), 0, Mathf.Cos(viewAngle * Mathf.Deg2Rad));
+    }
 
     private void Awake()
     {
         currentHealth = currentEnemySO.maxHealth;
         currentDamage = currentEnemySO.attackDamage;
+        currentRadius = currentEnemySO.visionRange;
+        currentViewAngle = currentEnemySO.visionAngle;
+    }
+
+    private void Start()
+    {
+        StartCoroutine("findTargetsWithDelay", .2f);
     }
 
     // Can be change if we decide the player manage all combat logic
