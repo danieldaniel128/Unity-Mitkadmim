@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Controllers_Player;
 
-namespace Movement
+namespace Animations_Player
 {
     public class PlayerMovementAnimations : MonoBehaviour
     {

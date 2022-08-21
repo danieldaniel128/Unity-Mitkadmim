@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Movement
+namespace Controllers_Player
 {
     public class PlayerLookTowards : MonoBehaviour
     {
