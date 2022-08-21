@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Elad
+namespace Movement
 {
-    public class PlayerMovementControllerV2 : MonoBehaviour
+    public class PlayerMovementController : MonoBehaviour
     {
         const string HORIZONTAL_AXIS = "Horizontal";
         const string VERTICAL_AXIS = "Vertical";
 
         public MovementData data; //data containing variables like max speed, acceleration, dash variables...
+
+        public float animovementX;
+        public float animovementZ;
     
         [SerializeField] Rigidbody rb;
         Vector3 cameraRelativeMovement;
@@ -43,6 +46,9 @@ namespace Elad
 
             //movement relative to direction camera is facing
             cameraRelativeMovement = (forwardRelativeVerticalInput + rightRelativeHorizontalInput).normalized;
+            Debug.Log(cameraRelativeMovement);
+            animovementX = cameraRelativeMovement.x;
+            animovementZ = cameraRelativeMovement.z;
 
             if (Input.GetKeyDown(data.dashKey) && dashAvailable)
             {
@@ -52,7 +58,6 @@ namespace Elad
             {
                 Move();
             }
-            Debug.Log(rb.velocity.magnitude);
         }
 
         private void Dash()
