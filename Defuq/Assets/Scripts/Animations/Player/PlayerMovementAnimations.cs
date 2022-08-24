@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Controllers_Player;
 
-namespace Animations_Player
+namespace Animations.Player
 {
     public class PlayerMovementAnimations : MonoBehaviour
     {
