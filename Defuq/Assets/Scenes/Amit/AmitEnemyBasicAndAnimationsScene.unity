@@ -1106,47 +1106,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -497688465526345628, guid: 5fea83a0794350046a3c28a83a89f153, type: 3}
---- !u!114 &1673525853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673525844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d91e8f01e7859724db350e1d126e6935, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyAnimator: {fileID: 1673525846}
-  KilledBoolExpersion: IsKilled
-  AttackBoolExpersion: IsAttacking
---- !u!114 &1673525854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673525844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0255715885bf0d7488dff4d2788ef90e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetsAquired: []
-  targetInAttRange: []
-  currentEnemySO: {fileID: 11400000, guid: 303474257d4e3a242ae853573e55584a, type: 2}
-  enemyEvent: {fileID: 0}
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  ObstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
-  currentRadius: 0
-  currentViewAngle: 0
-  currentAttackRange: 0
---- !u!114 &1673525855
+--- !u!114 &1673525850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1161,7 +1121,7 @@ MonoBehaviour:
   enemyKilled:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1673525853}
+      - m_Target: {fileID: 1673525851}
         m_TargetAssemblyTypeName: Animations.Enemies.AnimationSwitch, Assembly-CSharp
         m_MethodName: AnimatorKilledTrue
         m_Mode: 1
@@ -1176,7 +1136,7 @@ MonoBehaviour:
   enemyAttack:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1673525853}
+      - m_Target: {fileID: 1673525851}
         m_TargetAssemblyTypeName: Animations.Enemies.AnimationSwitch, Assembly-CSharp
         m_MethodName: AnimatorAttackTrue
         m_Mode: 1
@@ -1188,6 +1148,62 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1673525851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673525844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91e8f01e7859724db350e1d126e6935, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAnimator: {fileID: 1673525846}
+  KilledBoolExpersion: IsDead
+  AttackBoolExpersion: IsAttacking
+--- !u!114 &1673525852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673525844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a75d67cf46d46f45931385647f13e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentEnemySO: {fileID: 11400000, guid: 303474257d4e3a242ae853573e55584a, type: 2}
+  enemyEventScript: {fileID: 1673525850}
+  currentRadius: 0
+  currentViewAngle: 0
+  currentAttackRange: 0
+--- !u!114 &1673525853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673525844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0255715885bf0d7488dff4d2788ef90e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetsAquired: []
+  targetInAttRange: []
+  currentViewAngle: 0
+  currentRadius: 0
+  currentAttackRange: 0
+  currentEnemySO: {fileID: 11400000, guid: 303474257d4e3a242ae853573e55584a, type: 2}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 64
+  ObstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &2026295882
 GameObject:
   m_ObjectHideFlags: 0

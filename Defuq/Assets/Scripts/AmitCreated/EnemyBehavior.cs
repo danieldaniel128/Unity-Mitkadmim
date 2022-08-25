@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using Data.Scriptable;
-using System.Events;
-
 
 namespace amitScripts
 {
@@ -14,17 +11,20 @@ namespace amitScripts
         public List<Transform> targetsAquired = new List<Transform>();
         public List<Transform> targetInAttRange = new List<Transform>();
 
-        [SerializeField] EnemyStatsSO currentEnemySO;
-        [SerializeField] CreatureEvents enemyEvent;
+        public float currentViewAngle;
+        public float currentRadius;
+        public float currentAttackRange;
 
+        [SerializeField] EnemyStatsSO currentEnemySO;
         [SerializeField] LayerMask targetMask;
         [SerializeField] LayerMask ObstacleMask;
 
-        private int currentHealth;
-        private int currentDamage;
-        public float currentRadius;
-        public float currentViewAngle;
-        public float currentAttackRange;
+        private void Awake()
+        {
+            currentAttackRange = currentEnemySO.attackRange;
+            currentRadius = currentEnemySO.visionRange;
+            currentViewAngle = currentEnemySO.visionAngle;
+        }
 
         IEnumerator findTargetsWithDelay(float delay)
         {
@@ -39,13 +39,13 @@ namespace amitScripts
         void FindVisableTargets()
         {
             targetsAquired.Clear();
-            Collider[] targetInRadius = Physics.OverlapSphere(transform.position, currentRadius, targetMask);
+            Collider[] targetInRadius = Physics.OverlapSphere(transform.position, currentEnemySO.visionRange, targetMask);
 
             for (int i = 0; i < targetInRadius.Length; i++)
             {
                 Transform target = targetInRadius[i].transform;
                 Vector3 dirToTarger = (target.position - transform.position).normalized;
-                if (Vector3.Angle(transform.forward, dirToTarger) < currentViewAngle / 2)
+                if (Vector3.Angle(transform.forward, dirToTarger) < currentEnemySO.visionAngle / 2)
                 {
                     float dstToTarget = Vector3.Distance(transform.position, target.position);
 
@@ -60,7 +60,7 @@ namespace amitScripts
         void TargetsInAttackRange()
         {
             targetInAttRange.Clear();
-            Collider[] targetsInRange = Physics.OverlapSphere(transform.position, currentAttackRange, targetMask);
+            Collider[] targetsInRange = Physics.OverlapSphere(transform.position, currentEnemySO.attackRange, targetMask);
 
             for (int i = 0; i < targetsInRange.Length; i++)
             {
@@ -84,35 +84,9 @@ namespace amitScripts
             return new Vector3(Mathf.Sin(viewAngle * Mathf.Deg2Rad), 0, Mathf.Cos(viewAngle * Mathf.Deg2Rad));
         }
 
-        private void Awake()
-        {
-            currentHealth = currentEnemySO.maxHealth;
-            currentDamage = currentEnemySO.attackDamage;
-            currentRadius = currentEnemySO.visionRange;
-            currentViewAngle = currentEnemySO.visionAngle;
-            currentAttackRange = currentEnemySO.attackRange;
-        }
-
         private void Start()
         {
             StartCoroutine("findTargetsWithDelay", .2f);
-        }
-
-        // Can be change if we decide the player manage all combat logic
-        private void TakeDamage(int damageTaken)
-        {
-            if (currentHealth > 0)
-            {
-                currentHealth -= damageTaken;
-                // Debug
-                Debug.Log("Damage Taken");
-            }
-            else if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                enemyEvent.enemyKilled.Invoke();
-                Debug.Log("Enemy Killed");
-            }
         }
     }
 
