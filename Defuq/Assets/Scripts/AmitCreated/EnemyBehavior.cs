@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Data.Scriptable;
 
-namespace amitScripts
+namespace UI.Monitors
 {
     public class EnemyBehavior : MonoBehaviour
     {
