@@ -49,7 +49,7 @@ namespace Systems.Creatures
             this.viewAngle = visionAngle;
             this.attackRange = attackRange;
             this.SightRedius = visionRange;
-            Debug.Log("Angle, Attack,Sight " + viewAngle + " , " + this.attackRange +  " , " + SightRedius);
+            //Debug.Log("Angle, Attack,Sight " + viewAngle + " , " + this.attackRange +  " , " + SightRedius);
         }
 
         void TargetsInAttackRange()
