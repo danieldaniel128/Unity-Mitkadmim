@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -167,8 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3864ce8607f3c1343b34cc72de3849fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 1935178679}
-  enemyTransform: {fileID: 1673525859}
+  current_PlayerGameObject: {fileID: 1181645973}
+  enemiesList:
+  - {fileID: 1673525844}
 --- !u!1 &621225168
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +519,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ecc8cb56e78fe246a873afb62d362cf, type: 3}
+--- !u!1 &1181645973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6802751081646131755, guid: 3ecc8cb56e78fe246a873afb62d362cf, type: 3}
+  m_PrefabInstance: {fileID: 1181645972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1279814124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1482,11 +1488,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!4 &1673525859 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6454496000707943042, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
-  m_PrefabInstance: {fileID: 1279814124}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1883303885 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3937986394312374971, guid: 1bd8a4d331315b94b82c23ccaac56248, type: 3}
@@ -1518,11 +1519,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.13
   m_Center: {x: 0, y: 0.09, z: 0}
---- !u!4 &1935178679 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6135005212435042449, guid: 3ecc8cb56e78fe246a873afb62d362cf, type: 3}
-  m_PrefabInstance: {fileID: 1181645972}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2058466486
 GameObject:
   m_ObjectHideFlags: 0

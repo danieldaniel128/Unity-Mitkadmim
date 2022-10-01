@@ -8,32 +8,28 @@ public class SaveHandler : MonoBehaviour
 {
     public SaveFields saveFile = new SaveFields();
 
-    [SerializeField] Transform playerTransform;
-    [SerializeField] Transform enemyTransform;
+    [SerializeField] GameObject current_PlayerGameObject;
+    [SerializeField] List<GameObject> enemiesList;
 
     string json;
 
     private void Awake()
     {
         SaveManager.Initialize();
-
-        if (SaveManager.Load() != null)
-        {
-            string saveString = SaveManager.Load();
-            SaveFields savedObject = JsonUtility.FromJson<SaveFields>(saveString);
-
-            playerTransform.position = savedObject.playerLocation;
-        }
     }
 
     private void Start()
     {
-        InvokeRepeating("SaveIntervals", 5, 20);
+        InvokeRepeating("SaveTrigger", 5, 20);
     }
 
-    void SaveIntervals()
+    public void SaveTrigger()
     {
-        saveFile.playerLocation = playerTransform.position;
+        // saves player gameobject
+        saveFile.playerGO = current_PlayerGameObject;
+        // saves enemy list
+        saveFile.enemies = enemiesList;
+
 
         json = JsonUtility.ToJson(saveFile);
         SaveManager.Save(json);
@@ -41,4 +37,14 @@ public class SaveHandler : MonoBehaviour
         Debug.Log(SaveManager.Load());
     }
 
+    public void LoadGame()
+    {
+        if (SaveManager.Load() != null)
+        {
+            string saveString = SaveManager.Load();
+            SaveFields savedObject = JsonUtility.FromJson<SaveFields>(saveString);
+
+            current_PlayerGameObject = savedObject.playerGO;
+        }
+    }
 }
