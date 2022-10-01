@@ -29,7 +29,6 @@ namespace Controllers.States
             SetState(new IdleState("idle"));
         }
 
-
         private void Update()
         {
             state.Update();
@@ -41,8 +40,6 @@ namespace Controllers.States
             currentStae = state.tag;
             OnStateChange.Invoke(state);
         }
-
-
 
 
     }

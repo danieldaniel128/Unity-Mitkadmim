@@ -40,7 +40,6 @@ namespace Controllers.Player
             Vector2 animationMovement = new Vector2(x, z) / data.runMaxSpeed; //direction
             animator.SetFloat(velocityXHash, animationMovement.x);
             animator.SetFloat(velocityZHash, animationMovement.y);
-            //Debug.Log(animationMovement);
             //Debug.Log($"x: {x} z: {z}");
         }
     }
