@@ -8,7 +8,8 @@ namespace Data.Save
     public class SaveFields
     {
         public Vector3 playerLocation;
-        public Vector3 enemyLocation;
+        public int playerHealth;
+        public List<GameObject> enemies;
     }
 }
 

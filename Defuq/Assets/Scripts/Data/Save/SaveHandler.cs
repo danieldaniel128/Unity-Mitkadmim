@@ -34,7 +34,6 @@ public class SaveHandler : MonoBehaviour
     void SaveIntervals()
     {
         saveFile.playerLocation = playerTransform.position;
-        saveFile.enemyLocation = enemyTransform.position;
 
         json = JsonUtility.ToJson(saveFile);
         SaveManager.Save(json);
