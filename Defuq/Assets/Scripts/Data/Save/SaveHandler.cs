@@ -38,8 +38,6 @@ public class SaveHandler : MonoBehaviour
 
         json = JsonUtility.ToJson(saveFile);
         SaveManager.Save(json);
-
-        Debug.Log(SaveManager.Load());
     }
 
     public void LoadGame()
@@ -57,18 +55,18 @@ public class SaveHandler : MonoBehaviour
             {
                 CreatureController controller = current_enemies[i].GetComponent<CreatureController>();
                 current_enemies[i].transform.position = savedObject.savedEnemiesV3[i];
-                controller.SetCurrentHealth(MaxHpLimiter(controller));
+                controller.SetCurrentHealth(MaxHpLimiter(controller,savedObject.savedEnemiesHealth[i]));
             }
             #endregion#
         }
     }
 
-    private int MaxHpLimiter(CreatureController controller)
+    private int MaxHpLimiter(CreatureController controller,int savedHP)
     {
-        if (controller.GetCurrentHealth() > controller.GetMaxHp())
+        if (savedHP > controller.GetMaxHp())
         {
             return controller.GetMaxHp();
         }
-        else { return controller.GetCurrentHealth(); }
+        else { return savedHP; }
     }
 }

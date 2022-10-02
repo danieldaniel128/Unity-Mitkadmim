@@ -16,6 +16,12 @@ namespace Animations.Enemies
             enemyAnimator.SetBool(KilledBoolExpersion, true);
         }
 
+
+        public void AnimatorKilledFalse()
+        {
+            enemyAnimator.SetBool(KilledBoolExpersion, false);
+        }
+
         public void AnimatorAttackTrue()
         {
             enemyAnimator.SetBool(AttackBoolExpersion, true);

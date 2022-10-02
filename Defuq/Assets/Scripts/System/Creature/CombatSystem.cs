@@ -3,6 +3,7 @@ using Data.Creatures;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CombatSystem : MonoBehaviour
 {
@@ -32,9 +33,11 @@ public class CombatSystem : MonoBehaviour
         if (enemyCurrentHealth <= 0)
         {
             enemyCurrentHealth = 0;
-            _enemyData.GetEnemySwitch().AnimatorKilledTrue();
             Enemy.GetComponent<MeshCollider>().enabled = false;
             _enemyData.GetEnemyEvent().enemyKilled.Invoke();
+            _enemyData._lineOfSight.targetsAquired.Clear();
+            _enemyData._lineOfSight.targetInAttRange.Clear();
+
             if (Enemy.tag.Equals("Boss"))
             {
                 GameManager.instance.WinGame();
