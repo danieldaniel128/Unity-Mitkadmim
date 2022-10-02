@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ecd356e8f4b6e44b7e491ec322f2ec, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  maxHealth: 25
-  attackDamage: 14
+  maxHealth: 30
+  attackDamage: 12
   attackRange: 2
   visionRange: 8
   visionAngle: 120
